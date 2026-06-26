@@ -23,6 +23,7 @@ export default function ServiceCard({ service, index }: { service: Service; inde
             src={service.image}
             alt={service.title}
             className="w-full h-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-110"
+            style={{ objectPosition: service.imagePosition ?? "center" }}
             loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/85 via-navy-deep/20 to-transparent" />

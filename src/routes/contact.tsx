@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Phone, Mail, MapPin, Send, Clock, MessageCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Send, Clock, MessageCircle, Loader2 } from "lucide-react";
+import { toast } from "sonner";
 import Hero from "@/components/Hero";
 import heroImg from "@/assets/hero-contact.jpg";
 
@@ -18,7 +19,45 @@ export const Route = createFileRoute("/contact")({
 });
 
 function Contact() {
+  const [isLoading, setIsLoading] = useState(false);
   const [sent, setSent] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setErrors({});
+    
+    const fd = new FormData(e.currentTarget);
+    const name = fd.get("name") as string;
+    const phone = fd.get("phone") as string;
+    const email = fd.get("email") as string;
+    const dest = fd.get("dest") as string;
+    const date = fd.get("date") as string;
+    const info = fd.get("info") as string;
+
+    const newErrors: Record<string, string> = {};
+    if (!name) newErrors.name = "Name is required";
+    if (!phone) newErrors.phone = "Phone number is required";
+    if (!email) newErrors.email = "Email address is required";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      toast.error("Please fill in all required fields.");
+      return;
+    }
+
+    setIsLoading(true);
+    // simulate network request
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    setIsLoading(false);
+    
+    toast.success("Enquiry ready! Redirecting to WhatsApp...");
+    setSent(true);
+    
+    const message = `Hi AV Groups, I'm interested in planning a trip.\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Email:* ${email}\n*Destination:* ${dest || 'Not specified'}\n*Travel Date:* ${date || 'Not specified'}\n*Details:* ${info || 'None'}`;
+    
+    window.open(`https://wa.me/919398132966?text=${encodeURIComponent(message)}`, "_blank");
+  };
   return (
     <>
       <Hero
@@ -99,24 +138,23 @@ function Contact() {
                 </motion.div>
               ) : (
                 <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    setSent(true);
-                  }}
+                  onSubmit={handleSubmit}
                   className="space-y-4"
+                  noValidate
                 >
                   <div className="grid sm:grid-cols-2 gap-4">
-                    <Field label="Your name" name="name" placeholder="Jane Doe" required />
-                    <Field label="Phone" name="phone" placeholder="+91 ..." required />
+                    <Field label="Your name" name="name" placeholder="Enter your name" required error={errors.name} />
+                    <Field label="Phone" name="phone" placeholder="Enter your phone number" required error={errors.phone} />
                   </div>
-                  <Field label="Email" name="email" type="email" placeholder="you@email.com" required />
+                  <Field label="Email" name="email" type="email" placeholder="Enter your email address" required error={errors.email} />
                   <div className="grid sm:grid-cols-2 gap-4">
-                    <Field label="Destination" name="dest" placeholder="Bali, Maldives, ..." />
+                    <Field label="Destination" name="dest" placeholder="Where do you want to go?" />
                     <Field label="Travel date" name="date" type="date" />
                   </div>
                   <div>
                     <label className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">Tell us more</label>
                     <textarea
+                      name="info"
                       rows={4}
                       placeholder="Number of travellers, budget, special requests..."
                       className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-3 outline-none focus:border-gold transition-colors"
@@ -124,9 +162,14 @@ function Contact() {
                   </div>
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-gold-light via-gold to-gold-light text-navy-deep font-semibold shadow-gold hover:scale-105 transition-transform"
+                    disabled={isLoading}
+                    className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-gold-light via-gold to-gold-light text-navy-deep font-semibold shadow-gold hover:scale-105 transition-transform disabled:opacity-70 disabled:hover:scale-100"
                   >
-                    Send Enquiry <Send className="w-4 h-4" />
+                    {isLoading ? (
+                      <>Sending <Loader2 className="w-4 h-4 animate-spin" /></>
+                    ) : (
+                      <>Send Enquiry <Send className="w-4 h-4" /></>
+                    )}
                   </button>
                 </form>
               )}
@@ -149,18 +192,23 @@ function Contact() {
   );
 }
 
-function Field({ label, name, type = "text", placeholder, required }: { label: string; name: string; type?: string; placeholder?: string; required?: boolean }) {
+function Field({ label, name, type = "text", placeholder, required, error }: { label: string; name: string; type?: string; placeholder?: string; required?: boolean; error?: string }) {
   return (
     <div>
-      <label className="text-xs uppercase tracking-wider text-muted-foreground font-semibold" htmlFor={name}>{label}</label>
+      <label className="text-xs uppercase tracking-wider text-muted-foreground font-semibold flex items-center gap-1" htmlFor={name}>
+        {label}
+        {required && <span className="text-red-500">*</span>}
+      </label>
       <input
         id={name}
         name={name}
         type={type}
         placeholder={placeholder}
-        required={required}
-        className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-3 outline-none focus:border-gold transition-colors"
+        className={`mt-2 w-full rounded-xl border bg-background px-4 py-3 outline-none transition-colors ${
+          error ? "border-red-500 focus:border-red-600" : "border-border focus:border-gold"
+        }`}
       />
+      {error && <p className="text-xs text-red-500 mt-1">{error}</p>}
     </div>
   );
 }

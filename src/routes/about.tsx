@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Award, Target, Eye, Heart, Quote, ArrowRight } from "lucide-react";
 import Hero from "@/components/Hero";
 import heroImg from "@/assets/hero-about.jpg";
-import founder from "@/assets/founder.jpg";
+import founder from "@/assets/founder-image.jpeg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -23,8 +23,8 @@ function About() {
       <Hero
         image={heroImg}
         eyebrow="About Us"
-        title={<>Where journey <span className="gradient-gold-text italic">meets trust</span></>}
-        subtitle="A small Hyderabad-born travel house with a global heart — built on quality, trust and personalised service."
+        title={<>Where Every Journey <span className="gradient-gold-text italic">Reflects Excellence</span></>}
+        subtitle="At AV Groups & Holidays, we create thoughtfully curated travel experiences that combine exceptional service, meticulous planning, and uncompromising quality. Every journey is designed with precision, ensuring comfort, confidence, and memorable moments from departure to return."
         height="med"
       />
 
@@ -41,7 +41,7 @@ function About() {
             <div className="relative">
               <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-gold via-gold-light to-gold blur-xl opacity-40" />
               <div className="relative rounded-3xl overflow-hidden border-4 border-gold/60 shadow-gold">
-                <img src={founder} alt="Vishnu Vardhan, Founder" className="w-full aspect-[4/5] object-cover" />
+                <img src={founder} alt="Vishnu Vardhan, Founder" className="w-full h-auto object-cover" />
               </div>
               <div className="absolute -bottom-4 left-6 right-6 bg-navy-deep text-cream py-3 px-5 rounded-2xl shadow-navy text-center border border-gold/40">
                 <div className="text-xs text-gold uppercase tracking-[0.25em]">Founder</div>
@@ -58,18 +58,29 @@ function About() {
             transition={{ duration: 0.8 }}
             className="lg:col-span-3"
           >
-            <div className="gold-divider font-script text-2xl mb-3">Our Story</div>
-            <h2 className="font-display text-4xl md:text-5xl text-navy leading-tight">
-              From a small idea in Hyderabad to journeys across <span className="gradient-gold-text italic">60+ countries</span>
-            </h2>
-            <Quote className="w-10 h-10 text-gold mt-6" />
+            <div className="gold-divider font-script text-2xl mb-3">Our Story Since 2025</div>
+            <p className="mt-6 text-xl font-display text-navy">
+              AV Groups & Holidays Founded by Vishnu Vardhan,
+            </p>
             <p className="mt-4 text-lg text-foreground/85 leading-relaxed">
-              "I started AV Groups with a simple belief — that travel should feel personal, never transactional. Every itinerary we send out is one I'd be proud to hand to my own family."
+              The company was established to raise the standard of modern travel through personalized planning, refined experiences, and uncompromising service.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              A passionate entrepreneur dedicated to creating memorable travel experiences with trust, quality and personalised service. Today, AV Groups serves thousands of travellers — families, honeymooners, pilgrims and corporate teams — with the same handcrafted care it started with.
+              Our foundation is rooted in professionalism, transparency, and meticulous attention to detail. Every itinerary is carefully curated, every partnership thoughtfully chosen, and every client relationship valued beyond a single journey.
             </p>
-            <div className="mt-6 font-script text-2xl text-gold">— Vishnu Vardhan</div>
+            <p className="mt-6 text-lg text-foreground/85 leading-relaxed">
+              Travel is more than reaching a destination; it is about experiencing the world with confidence, comfort, and purpose.
+            </p>
+            <p className="mt-4 text-muted-foreground leading-relaxed">
+              Driven by innovation, guided by integrity, and inspired by the world's most remarkable destinations, we deliver travel experiences that combine sophistication, precision, and personalized attention.
+            </p>
+            <p className="mt-4 text-muted-foreground leading-relaxed">
+              Every destination we recommend, every itinerary we design, and every experience we curate reflects our unwavering commitment to excellence.
+            </p>
+            <div className="mt-8 font-display text-2xl text-navy">
+              Travel isn't our business. <br/>
+              <span className="gradient-gold-text italic">It's our signature.</span>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -84,7 +95,7 @@ function About() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { i: Target, t: "Our Mission", d: "To craft seamless, soulful journeys that turn first-time travellers into lifelong explorers — backed by uncompromising service." },
-              { i: Eye, t: "Our Vision", d: "To become India's most trusted name in personalised travel, known equally for our taste and our integrity." },
+              { i: Eye, t: "Our Vision", d: "To set a new benchmark for premium travel by becoming a globally recognized brand built on trust, excellence, and enduring relationships." },
               { i: Heart, t: "Our Values", d: "Trust above all. Quality without compromise. Service that anticipates. And a genuine love for the road." },
             ].map((v, i) => (
               <motion.div
@@ -116,10 +127,9 @@ function About() {
           </div>
           <div className="relative border-l-2 border-gold/40 pl-8 space-y-10 ml-4">
             {[
-              { y: "Founded", t: "AV Groups & Holidays born", d: "A founder, a laptop, a list of dream destinations." },
-              { y: "1,000+", t: "First thousand happy travellers", d: "Word-of-mouth carried us across South India." },
+              { y: "Founded", t: "The Beginning", d: "A vision to redefine travel through trust, precision, and exceptional experiences." },
+              { y: "100+", t: "Milestone of Trust", d: "Every satisfied traveler became part of our growing story." },
               { y: "Global", t: "International desk launched", d: "Europe, Dubai, Bali, Maldives, Singapore and beyond." },
-              { y: "Today", t: "10,000+ travellers, 60+ countries", d: "Still answering every WhatsApp ourselves." },
             ].map((m, i) => (
               <motion.div
                 key={m.t}

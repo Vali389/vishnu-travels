@@ -5,6 +5,9 @@ import Hero from "@/components/Hero";
 import ServiceCard from "@/components/ServiceCard";
 import { services, moreServices } from "@/data/services";
 import heroImg from "@/assets/hero-home.jpg";
+import heroHomeNew from "@/assets/hero-home-new.jpeg";
+import vipImg from "@/assets/why-choose-us-vip.jpeg";
+import whyChooseUsImg from "@/assets/why-choose-us.jpeg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -27,19 +30,62 @@ const features = [
 
 const stats = [
   { v: "10k+", l: "Happy Travellers" },
-  { v: "60+", l: "Countries Covered" },
+  { v: "50+", l: "Destinations Covered" },
   { v: "500+", l: "Curated Itineraries" },
   { v: "4.9★", l: "Average Rating" },
+];
+
+const testimonials = [
+  {
+    name: "Aarav Mehta",
+    role: "Family Vacation, Mumbai",
+    text: "AV Groups & Holidays made our family holiday to Switzerland absolutely flawless. The attention to detail, premium transfers, and villa arrangements were top-notch!",
+  },
+  {
+    name: "Priya Sharma",
+    role: "Corporate Travel Manager, TechCorp",
+    text: "Handling corporate travel for our team of 40 was effortless. Every flight booking, visa arrangement, and hotel stays was handled with absolute precision and professionalism.",
+  },
+  {
+    name: "Rohan & Sneha",
+    role: "Honeymoon, Bangalore",
+    text: "Our honeymoon in Maldives was like a dream. The room upgrades, private sunset cruise, and candle-lit beach dining setups arranged by them were incredibly special.",
+  },
+  {
+    name: "Vikram Reddy",
+    role: "Business Owner, Hyderabad",
+    text: "The luxury transportation services are outstanding. Clean high-end vehicles, extremely polite & punctual drivers, and professional real-time coordination.",
+  },
+  {
+    name: "Dr. Anjali Sen",
+    role: "Premium Tour, Kolkata",
+    text: "Exceptional service for visa processing and international holiday planning. They kept us updated at every single step. Truly a trusted travel partner.",
+  },
+  {
+    name: "Mr. & Mrs. Kapoor",
+    role: "Custom Holiday, Delhi",
+    text: "Their customized Europe itinerary was perfect. They understood our need for senior-friendly pacing while retaining luxury and premium comforts throughout.",
+  },
+  {
+    name: "Sneha Nair",
+    role: "Corporate Executive, Chennai",
+    text: "Outstanding service. The 24/7 support team saved us when our flight got cancelled in London. Had us rebooked on the next available premium flight in minutes!",
+  },
+  {
+    name: "K. Rao",
+    role: "Temple Tour, Hyderabad",
+    text: "A truly high-end experience. The curated temple tours in India are organized with deep respect, premium accommodation, and absolute comfort for elders.",
+  },
 ];
 
 function Home() {
   return (
     <>
       <Hero
-        image={heroImg}
+        image={heroHomeNew}
         eyebrow="Let's Explore"
-        title={<>The World, <span className="gradient-gold-text font-display italic">Together</span></>}
-        subtitle="Your trusted travel partner for unforgettable experiences across the globe — crafted with trust, quality and personal service."
+        title={<>Every Journey Deserves <span className="gradient-gold-text font-display italic">Excellence.</span></>}
+        subtitle="Premium holidays, luxury transportation, and personalized travel experiences for you and world-class travel solutions designed around you."
       >
         <div className="flex flex-wrap gap-4">
           <Link to="/services" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-gold-light via-gold to-gold-light text-navy-deep font-semibold shadow-gold hover:scale-105 transition-transform">
@@ -124,14 +170,17 @@ function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="gold-divider font-script text-2xl mb-3">Why AV Groups</div>
-            <h2 className="font-display text-4xl md:text-5xl text-navy">A travel company that treats every trip like its first</h2>
+            <div className="gold-divider font-script text-2xl mb-3">Why AV Groups & Holidays</div>
+            <h2 className="font-display text-4xl md:text-5xl text-navy">Elevating the Way the World Travels</h2>
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              We're not a booking engine. We're a small, obsessive team of travel curators based in Hyderabad — building the kind of trips we'd want our own families to take.
+              Every journey we create reflects our commitment to excellence. We combine destination expertise, personalized planning, and premium service to deliver travel experiences that are effortless, memorable, and tailored to your expectations.
+            </p>
+            <p className="mt-4 text-muted-foreground leading-relaxed">
+              Whether exploring India or discovering the world, AV Groups & Holidays ensures every detail is managed with precision, professionalism, and care.
             </p>
             <ul className="mt-6 space-y-3">
               {[
-                { i: Globe2, t: "60+ countries", d: "Trusted ground partners worldwide" },
+                { i: Globe2, t: "50+ destinations", d: "Trusted ground partners worldwide" },
                 { i: Users, t: "Family-first planning", d: "Senior-friendly pace, kid-friendly stops" },
                 { i: Sparkles, t: "Quiet luxury", d: "Upgrades, perks and surprises baked in" },
                 { i: Star, t: "Transparent pricing", d: "What you see is what you pay" },
@@ -164,7 +213,7 @@ function Home() {
             className="perspective-1000"
           >
             <div className="relative rounded-3xl overflow-hidden shadow-navy">
-              <img src={heroImg} alt="Travel" className="w-full h-[500px] object-cover" />
+              <img src={vipImg} alt="Travel" className="w-full h-[500px] object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/80 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 text-cream">
                 <div className="font-script text-gold-light text-2xl">Travel More,</div>
@@ -175,11 +224,53 @@ function Home() {
         </div>
       </section>
 
+      {/* Testimonials / Reviews */}
+      <section className="py-24 bg-cream/40 overflow-hidden border-t border-b border-gold/15">
+        <div className="mx-auto max-w-7xl px-6 mb-14 text-center">
+          <div className="gold-divider font-script text-2xl mb-3">Client Reviews</div>
+          <h2 className="font-display text-4xl md:text-5xl text-navy">What Our Clients Say</h2>
+          <p className="text-muted-foreground mt-3 max-w-2xl mx-auto">
+            Real stories from our luxury travellers and corporate partners who trust us with their most important journeys.
+          </p>
+        </div>
+
+        {/* Scrolling marquee */}
+        <div className="relative flex flex-col gap-6 w-full overflow-hidden mask-gradient-x py-4">
+          <div className="flex gap-6 w-max animate-marquee pause-on-hover">
+            {[...testimonials, ...testimonials].map((t, idx) => (
+              <div
+                key={idx}
+                className="w-[380px] flex-shrink-0 bg-card p-8 rounded-3xl border border-gold/20 shadow-sm hover:border-gold/60 transition-all flex flex-col justify-between group hover:scale-[1.02] duration-300"
+              >
+                <div>
+                  <div className="flex gap-1 mb-4 text-gold">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-current" />
+                    ))}
+                  </div>
+                  <p className="text-muted-foreground italic mb-6 leading-relaxed">
+                    "{t.text}"
+                  </p>
+                </div>
+                <div className="flex items-center gap-4 border-t border-gold/10 pt-4">
+                  <div className="w-12 h-12 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center font-display text-gold text-lg font-bold">
+                    {t.name[0]}
+                  </div>
+                  <div>
+                    <h4 className="font-display font-semibold text-navy text-base">{t.name}</h4>
+                    <p className="text-xs text-muted-foreground">{t.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* More services */}
       <section className="py-20 px-6 bg-muted/40">
         <div className="mx-auto max-w-6xl text-center">
-          <div className="gold-divider font-script text-2xl mb-3">More Services</div>
-          <h2 className="font-display text-3xl md:text-4xl text-navy mb-10">A little extra for every traveller</h2>
+          <div className="gold-divider font-script text-2xl mb-10">Our Signature Services</div>
           <div className="flex flex-wrap justify-center gap-3">
             {moreServices.map((m, i) => (
               <motion.span
@@ -208,8 +299,8 @@ function Home() {
           <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(circle at 30% 30%, var(--gold) 0%, transparent 50%)" }} />
           <div className="relative">
             <div className="gold-divider font-script text-2xl mb-3">Ready when you are</div>
-            <h2 className="font-display text-4xl md:text-5xl">Let's plan your next adventure</h2>
-            <p className="mt-4 text-cream/70 max-w-xl mx-auto">Tell us where you dream of going. We'll handle every detail from visa to villa.</p>
+            <h2 className="font-display text-4xl md:text-5xl">Let's Create Something Extraordinary</h2>
+            <p className="mt-4 text-cream/70 max-w-xl mx-auto">Every exceptional journey begins with a conversation. Let us create an itinerary tailored exclusively for you.</p>
             <Link to="/contact" className="mt-8 inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-gold-light via-gold to-gold-light text-navy-deep font-semibold shadow-gold hover:scale-105 transition-transform">
               Start Planning <ArrowRight className="w-4 h-4" />
             </Link>

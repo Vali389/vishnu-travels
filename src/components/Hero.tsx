@@ -20,10 +20,10 @@ export default function Hero({ image, eyebrow, title, subtitle, children, height
         className="absolute inset-0"
       >
         <div
-          className="absolute inset-0 bg-cover bg-center animate-ken-burns"
+          className="absolute inset-0 bg-cover bg-top animate-ken-burns"
           style={{ backgroundImage: `url(${image})` }}
         />
-        <div className="absolute inset-0 bg-hero-overlay" />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, oklch(0.14 0.05 265 / 0.65) 0%, oklch(0.14 0.05 265 / 0.45) 40%, oklch(0.14 0.05 265 / 0.85) 100%)' }} />
       </motion.div>
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10 w-full pt-32 pb-20">

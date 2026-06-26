@@ -14,6 +14,7 @@ export type Service = {
   title: string;
   tagline: string;
   image: string;
+  imagePosition?: string;
   icon: string;
   highlights: string[];
   description: string;
@@ -54,6 +55,7 @@ export const services: Service[] = [
     title: "Flight Ticket Booking",
     tagline: "Skyward made simple",
     image: flight,
+    imagePosition: "top",
     icon: "Ticket",
     badge: "Comfort | Quality | Value",
     highlights: ["Domestic & International", "Best Fares • Group Fares", "Student Fares", "Last Minute Tickets", "Rescheduling & Cancellation"],
@@ -160,7 +162,7 @@ export const moreServices = [
   "Activity & Attractions",
   "Travel Insurance",
   "Forex & Currency Assistance",
-  "Premium Hospitality Services",
-  "Digital Travel Support",
+  "VIP & Premium Hospitality Services",
+  "24/7 Travel Support",
   "Special Interest Tours",
 ];

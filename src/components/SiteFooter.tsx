@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Phone, Mail, MapPin, Facebook, Instagram, MessageCircle, Plane } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo-main.jpeg";
 
 export default function SiteFooter() {
   return (
@@ -16,7 +16,7 @@ export default function SiteFooter() {
             </div>
           </div>
           <p className="text-sm text-cream/70 leading-relaxed">
-            Your trusted travel partner for unforgettable experiences across the globe.
+            Every Destination. Every Detail. Perfectly Planned.
           </p>
         </div>
 

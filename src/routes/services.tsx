@@ -41,7 +41,7 @@ function Services() {
 
       <section className="py-16 px-6 bg-muted/40">
         <div className="mx-auto max-w-6xl text-center">
-          <div className="gold-divider font-script text-2xl mb-3">More Services</div>
+          <div className="gold-divider font-script text-2xl mb-3">Our Signature Services</div>
           <h2 className="font-display text-3xl md:text-4xl text-navy mb-10">Beyond the obvious</h2>
           <div className="flex flex-wrap justify-center gap-3">
             {moreServices.map((m, i) => (
