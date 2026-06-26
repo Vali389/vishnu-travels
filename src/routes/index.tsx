@@ -29,9 +29,9 @@ const features = [
 ];
 
 const stats = [
-  { v: "10k+", l: "Happy Travellers" },
+  { v: "500+", l: "Happy Travellers" },
   { v: "50+", l: "Destinations Covered" },
-  { v: "500+", l: "Curated Itineraries" },
+  { v: "100+", l: "Curated Itineraries" },
   { v: "4.9★", l: "Average Rating" },
 ];
 
